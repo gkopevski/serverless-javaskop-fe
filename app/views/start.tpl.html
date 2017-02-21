@@ -1,0 +1,11 @@
+<h2>Login</h2>
+
+<input type="password"
+       data-ng-model="startCtrl.password" />
+
+<button type="submit"
+        class="btn btn-primary"
+        data-ng-click="startCtrl.login()"
+        data-ng-disabled="startCtrl.isPasswordEmpty()">
+    Login
+</button>

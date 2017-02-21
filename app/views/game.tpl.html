@@ -1,0 +1,49 @@
+<h2>Game</h2>
+
+<input type="text"
+       data-ng-model="gameCtrl.player1.name"
+       data-ng-disabled="gameCtrl.gameStarted"/>
+<span data-ng-if="gameCtrl.player1.id">({{gameCtrl.player1.id}})</span>
+
+<button class="btn btn-primary"
+        data-ng-if="gameCtrl.gameStarted"
+        data-ng-click="gameCtrl.stopGame(gameCtrl.player1)"
+        data-ng-disabled="gameCtrl.player1.hasFinished">
+    Stop
+</button>
+
+<hr>
+
+<input type="text"
+       data-ng-model="gameCtrl.player2.name"
+       data-ng-disabled="gameCtrl.gameStarted"/>
+<span data-ng-if="gameCtrl.player2.id">({{gameCtrl.player2.id}})</span>
+
+<button class="btn btn-primary"
+        data-ng-if="gameCtrl.gameStarted"
+        data-ng-click="gameCtrl.stopGame(gameCtrl.player2)"
+        data-ng-disabled="gameCtrl.player2.hasFinished">
+    Stop
+</button>
+
+<br/>
+<br/>
+
+{{gameCtrl.player1}}
+{{gameCtrl.player2}}
+
+<br />
+
+<button class="btn btn-primary"
+        data-ng-click="gameCtrl.startGame()"
+        data-ng-if="!gameCtrl.gameStarted"
+        data-ng-disabled="!gameCtrl.canGameStart()">
+    Start game
+</button>
+
+<button class="btn btn-primary"
+        data-ng-click="gameCtrl.finishGame()"
+        data-ng-if="gameCtrl.hasGameFinished()"
+        data-ng-disabled="!gameCtrl.hasGameFinished()">
+    Finish game
+</button>

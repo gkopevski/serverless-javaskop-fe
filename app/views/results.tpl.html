@@ -1,0 +1,13 @@
+<h3>Results</h3>
+
+<div data-ng-repeat="entry in resultsCtrl.resultsList | orderBy: ['-time.S', '-id.S'] track by $index">
+    <div>{{$index + 1}}.</div>
+    <div>{{entry.id.S}}</div>
+    <div>{{entry.name.S}}</div>
+    <div>{{entry.time.S}}</div>
+</div>
+
+<button class="btn btn-primary"
+        data-ng-click="resultsCtrl.newGame()">
+    New
+</button>
