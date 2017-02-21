@@ -1,29 +1,38 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+.logo {
+  border-bottom: 1px solid #ddd;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 5;
+  width: 100%;
 }
 
-.menu:before {
-  content: "[";
+.logo-image {
+  width: 350px;
+  height: 74px;
 }
 
-.menu:after {
-  content: "]";
+.app-container {
+  position: relative;
+  clear: both;
+  background-color: #f7f7f7;
+  padding: 0 25px 5px 25px;
+  margin-top: 74px;
+  width: 100%;
 }
 
-.menu > li {
-  display: inline;
+.btn-new-game {
+  position: fixed;
+  z-index: 10;
+  top: 20px;
+  right: 20px;
 }
 
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
+.btn-primary {
+  color: #FFF;
+  background-color: #FF675B;
+  border: 1px solid rgba(0,0,0,.1);
 
-input {
-  border: 1px solid;
+  font-family: 'Roboto Condensed', sans-serif;
 }

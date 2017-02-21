@@ -4,13 +4,11 @@ angular.module('serverless.javaskop')
   .controller('GameController', ['$state', 'apiFactory', '$scope', '$interval',
     function ($state, apiFactory, $scope, $interval) {
 
-      // TODO should be removed
-      // http://jsfiddle.net/joshkurz/5LCXU/
-      // http://embed.plnkr.co/UVzM2QRWHoZxFeg6jkPG
-
       var gameCtrl = this;
 
       gameCtrl.player1 = {
+        id: undefined,
+        name: '',
         hasFinished: false,
         timer: {
           timerId: undefined,
@@ -19,6 +17,8 @@ angular.module('serverless.javaskop')
         }
       };
       gameCtrl.player2 = {
+        id: undefined,
+        name: '',
         hasFinished: false,
         timer: {
           timerId: undefined,
@@ -85,7 +85,6 @@ angular.module('serverless.javaskop')
       };
 
       $scope.$on('$destroy', function () {
-        // Make sure that the intervals are destroyed too
         gameCtrl.stopTimer(gameCtrl.player1.timer);
         gameCtrl.stopTimer(gameCtrl.player2.timer);
       });
@@ -112,10 +111,33 @@ angular.module('serverless.javaskop')
         if (!hasGameFinished()) {
           return;
         }
-        // TODO call service for saving results
-        alert('Player1: ' + JSON.stringify(gameCtrl.player1, null, 2) + '\n Player2: ' + JSON.stringify(gameCtrl.player2, null, 2));
+        // alert('Player1: ' + JSON.stringify(gameCtrl.player1, null, 2) + '\n Player2: ' + JSON.stringify(gameCtrl.player2, null, 2));
+
+        insertResult(gameCtrl.player1);
+        insertResult(gameCtrl.player2);
+
         // go to results page
         $state.go('results');
+      }
+
+      function formatTime(player) {
+        return player.timer.minutes + ':' + player.timer.seconds;
+      }
+
+
+      function insertResult (player) {
+        var formattedData = {
+          'id': player.id,
+          'name': player.name,
+          'time': formatTime(player)
+        }
+
+        apiFactory.insertResult(formattedData)
+          .then(function (success) {
+            },
+            function (error) {
+              console.log('Results retrieval failed. Error: ' + JSON.stringify(error));
+            });
       }
 
     }

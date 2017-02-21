@@ -43,5 +43,25 @@ angular.module('serverless.javaskop')
       return def.promise;
     };
 
+    apiFactory.insertResult = function (result) {
+      var resultsUrl = getResultsUrl();
+
+      var def = $q.defer();
+
+      $http({
+        method: 'POST',
+        url: resultsUrl,
+        data: result,
+        headers: {'Content-Type': 'application/json'}
+      }).success(function (data) {
+          def.resolve(data);
+        })
+        .error(function (e) {
+          def.reject(e);
+        });
+
+      return def.promise;
+    };
+
     return apiFactory;
   });
