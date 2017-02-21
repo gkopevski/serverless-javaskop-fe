@@ -12,7 +12,7 @@
             <td>{{$index + 1}}.</td>
             <td>{{entry.name.S}}</td>
             <td>{{entry.email.S || 'some email...'}}</td>
-            <td>{{entry.time.S}}</td>
+            <td>{{entry.time.S | parseTime}}</td>
         </tr>
     </table>
 
