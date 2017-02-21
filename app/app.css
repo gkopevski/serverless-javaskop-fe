@@ -1,3 +1,7 @@
+body {
+  font-family: Roboto sans-serif;
+}
+
 .logo {
   border-bottom: 1px solid #ddd;
   position: fixed;
@@ -29,10 +33,21 @@
   right: 20px;
 }
 
-.btn-primary {
+.btn {
   color: #FFF;
   background-color: #FF675B;
   border: 1px solid rgba(0,0,0,.1);
 
+  font-weight: 300;
   font-family: 'Roboto Condensed', sans-serif;
+}
+
+.btn.focus, .btn:focus, .btn:hover, .btn:active {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(0,0,0,.1);
+}
+
+input {
+  border: 1px solid #333;
 }
