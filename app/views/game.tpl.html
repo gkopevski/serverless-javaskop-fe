@@ -1,30 +1,79 @@
-<h2>Game</h2>
+<div header>%nbsp;</div>
 
-<input type="text"
-       data-ng-model="gameCtrl.player1.name"
-       data-ng-disabled="gameCtrl.gameStarted"/>
-<span data-ng-if="gameCtrl.player1.id">({{gameCtrl.player1.id}})</span>
+<div class="app-container game-page">
+    <div class="player-container">
+        <h2>Player 1</h2>
+        <div class="form-group">
+            <input type="text"
+                   placeholder="Name"
+                   class="form-control"
+                   data-ng-model="gameCtrl.player1.name"
+                   data-ng-disabled="gameCtrl.gameStarted"/>
+        </div>
+        <div class="form-group">
+            <input type="email"
+                   placeholder="E-mail TODO"
+                   class="form-control"
+                   data-ng-model="gameCtrl.player1.email"
+                   data-ng-disabled="gameCtrl.gameStarted"/>
+        </div>
 
-<button class="btn btn-primary"
-        data-ng-if="gameCtrl.gameStarted"
-        data-ng-click="gameCtrl.stopGame(gameCtrl.player1)"
-        data-ng-disabled="gameCtrl.player1.hasFinished">
-    Stop
-</button>
+        <h1 data-ng-if="gameCtrl.gameStarted">{{gameCtrl.formatTime(gameCtrl.player1) | parseTime}}</h1>
 
-<hr>
+        <button class="btn"
+                data-ng-if="gameCtrl.gameStarted"
+                data-ng-click="gameCtrl.stopGame(gameCtrl.player1)"
+                data-ng-disabled="gameCtrl.player1.hasFinished">
+            Stop
+        </button>
+    </div>
+    <div class="player-container">
+        <h2>Player 2</h2>
+        <div class="form-group">
+            <input type="text"
+                   placeholder="Name"
+                   class="form-control"
+                   data-ng-model="gameCtrl.player2.name"
+                   data-ng-disabled="gameCtrl.gameStarted"/>
+        </div>
+        <div class="form-group">
+            <input type="email"
+                   placeholder="E-mail TODO"
+                   class="form-control"
+                   data-ng-model="gameCtrl.player2.email"
+                   data-ng-disabled="gameCtrl.gameStarted"/>
+        </div>
 
-<input type="text"
-       data-ng-model="gameCtrl.player2.name"
-       data-ng-disabled="gameCtrl.gameStarted"/>
-<span data-ng-if="gameCtrl.player2.id">({{gameCtrl.player2.id}})</span>
+        <h1 data-ng-if="gameCtrl.gameStarted">{{gameCtrl.formatTime(gameCtrl.player2) | parseTime}}</h1>
 
-<button class="btn btn-primary"
-        data-ng-if="gameCtrl.gameStarted"
-        data-ng-click="gameCtrl.stopGame(gameCtrl.player2)"
-        data-ng-disabled="gameCtrl.player2.hasFinished">
-    Stop
-</button>
+        <button class="btn"
+                data-ng-if="gameCtrl.gameStarted"
+                data-ng-click="gameCtrl.stopGame(gameCtrl.player2)"
+                data-ng-disabled="gameCtrl.player2.hasFinished">
+            Stop
+        </button>
+    </div>
+
+
+    <div class="btn-container">
+        <button class="btn"
+                data-ng-click="gameCtrl.startGame()"
+                data-ng-if="!gameCtrl.gameStarted"
+                data-ng-disabled="!gameCtrl.canGameStart()">
+            Start game
+        </button>
+
+        <button class="btn"
+                data-ng-click="gameCtrl.finishGame()"
+                data-ng-if="gameCtrl.hasGameFinished()"
+                data-ng-disabled="!gameCtrl.hasGameFinished()">
+            Finish game
+        </button>
+    </div>
+
+</div>
+
+
 
 <br/>
 <br/>
@@ -34,16 +83,3 @@
 
 <br />
 
-<button class="btn btn-primary"
-        data-ng-click="gameCtrl.startGame()"
-        data-ng-if="!gameCtrl.gameStarted"
-        data-ng-disabled="!gameCtrl.canGameStart()">
-    Start game
-</button>
-
-<button class="btn btn-primary"
-        data-ng-click="gameCtrl.finishGame()"
-        data-ng-if="gameCtrl.hasGameFinished()"
-        data-ng-disabled="!gameCtrl.hasGameFinished()">
-    Finish game
-</button>

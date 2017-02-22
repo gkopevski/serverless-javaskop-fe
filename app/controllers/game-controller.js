@@ -34,6 +34,8 @@ angular.module('serverless.javaskop')
       gameCtrl.stopGame = stopGame;
       gameCtrl.finishGame = finishGame;
 
+      gameCtrl.formatTime = formatTime;
+
 
       function startGame () {
         if (!canGameStart()) {
@@ -113,14 +115,21 @@ angular.module('serverless.javaskop')
         }
         // alert('Player1: ' + JSON.stringify(gameCtrl.player1, null, 2) + '\n Player2: ' + JSON.stringify(gameCtrl.player2, null, 2));
 
-        insertResult(gameCtrl.player1);
-        insertResult(gameCtrl.player2);
+        Promise.all([
+          insertResult(gameCtrl.player1),
+          insertResult(gameCtrl.player2)
+        ]).then(function () {
+            // go to results page
+            $state.go('results');
+          },
+          function (error) {
+            console.log('Inserting results failed. Error: ' + JSON.stringify(error));
+          });
 
-        // go to results page
-        $state.go('results');
+
       }
 
-      function formatTime(player) {
+      function formatTime (player) {
         return player.timer.minutes + ':' + player.timer.seconds;
       }
 
@@ -131,13 +140,7 @@ angular.module('serverless.javaskop')
           'name': player.name,
           'time': formatTime(player)
         }
-
-        apiFactory.insertResult(formattedData)
-          .then(function (success) {
-            },
-            function (error) {
-              console.log('Results retrieval failed. Error: ' + JSON.stringify(error));
-            });
+        return apiFactory.insertResult(formattedData);
       }
 
     }
