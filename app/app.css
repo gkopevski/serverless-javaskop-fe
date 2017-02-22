@@ -26,6 +26,33 @@ body {
   width: 100%;
 }
 
+.app-container.start-page {
+  background-image: url(https://www.cuponation.com/wp-content/uploads/2016/02/cnworldsmall-1.png?id=2863);
+  width: 100%;
+  display: block;
+  float: left;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: fixed;
+  height: 100%;
+  min-height: 100%;
+}
+
+.login-container {
+  position: absolute;
+  left: 30px;
+  width: 300px;
+  top: 20px;
+  padding: 30px;
+  height: auto;
+  background-color: white;
+  border: 1px solid #999;
+}
+
+.login-container button {
+  width: 100%;
+}
+
 .btn-new-game {
   position: fixed;
   z-index: 10;

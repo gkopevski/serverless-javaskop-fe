@@ -1,11 +1,19 @@
-<h2>Login</h2>
+<div header>%nbsp;</div>
 
-<input type="password"
-       data-ng-model="startCtrl.password" />
+<div class="app-container start-page">
+    <div class="login-container">
+        <div class="form-group">
+            <input type="password"
+                   class="form-control"
+                   placeholder="Password"
+                   data-ng-model="startCtrl.password">
+        </div>
 
-<button type="submit"
-        class="btn btn-primary"
-        data-ng-click="startCtrl.login()"
-        data-ng-disabled="startCtrl.isPasswordEmpty()">
-    Login
-</button>
+        <button type="submit"
+                class="btn"
+                data-ng-click="startCtrl.login()"
+                data-ng-disabled="startCtrl.isPasswordEmpty()">
+            Login
+        </button>
+    </div>
+</div>
