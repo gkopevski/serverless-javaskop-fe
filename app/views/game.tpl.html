@@ -2,15 +2,17 @@
 
 <div class="app-container game-page">
     <div class="player-container">
-        <h2>Player 1</h2>
-        <div class="form-group">
+        <h2 class="title">Player 1</h2>
+        <div class="form-group"
+             data-ng-show="!gameCtrl.gameStarted">
             <input type="text"
                    placeholder="Name"
                    class="form-control"
                    data-ng-model="gameCtrl.player1.name"
                    data-ng-disabled="gameCtrl.gameStarted"/>
         </div>
-        <div class="form-group">
+        <div class="form-group"
+             data-ng-show="!gameCtrl.gameStarted">
             <input type="email"
                    placeholder="E-mail TODO"
                    class="form-control"
@@ -18,7 +20,8 @@
                    data-ng-disabled="gameCtrl.gameStarted"/>
         </div>
 
-        <h1 data-ng-if="gameCtrl.gameStarted">{{gameCtrl.formatTime(gameCtrl.player1) | parseTime}}</h1>
+        <h3 class="player-name" data-ng-if="gameCtrl.gameStarted">{{gameCtrl.player1.name}}</h3>
+        <h1 class="time" data-ng-if="gameCtrl.gameStarted">{{gameCtrl.formatTime(gameCtrl.player1) | parseTime}}</h1>
 
         <button class="btn"
                 data-ng-if="gameCtrl.gameStarted"
@@ -28,15 +31,17 @@
         </button>
     </div>
     <div class="player-container">
-        <h2>Player 2</h2>
-        <div class="form-group">
+        <h2 class="title">Player 2</h2>
+        <div class="form-group"
+             data-ng-show="!gameCtrl.gameStarted">
             <input type="text"
                    placeholder="Name"
                    class="form-control"
                    data-ng-model="gameCtrl.player2.name"
                    data-ng-disabled="gameCtrl.gameStarted"/>
         </div>
-        <div class="form-group">
+        <div class="form-group"
+             data-ng-show="!gameCtrl.gameStarted">
             <input type="email"
                    placeholder="E-mail TODO"
                    class="form-control"
@@ -44,7 +49,8 @@
                    data-ng-disabled="gameCtrl.gameStarted"/>
         </div>
 
-        <h1 data-ng-if="gameCtrl.gameStarted">{{gameCtrl.formatTime(gameCtrl.player2) | parseTime}}</h1>
+        <h3 class="player-name" data-ng-if="gameCtrl.gameStarted">{{gameCtrl.player2.name}}</h3>
+        <h1 class="time" data-ng-if="gameCtrl.gameStarted">{{gameCtrl.formatTime(gameCtrl.player2) | parseTime}}</h1>
 
         <button class="btn"
                 data-ng-if="gameCtrl.gameStarted"

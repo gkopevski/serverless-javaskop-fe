@@ -1,5 +1,6 @@
 body {
   /*font-family: Roboto sans-serif;*/
+  background-color: #f7f7f7;
 }
 
 .logo {
@@ -18,7 +19,7 @@ body {
 }
 
 .app-container {
-  position: fixed;
+  position: relative;
   clear: both;
   background-color: #f7f7f7;
   padding: 0 25px 5px 25px;
@@ -50,7 +51,7 @@ body {
 }
 
 .btn-new-game {
-  position: absolute;
+  position: fixed;
   z-index: 100;
   top: 20px;
   right: 20px;
@@ -88,11 +89,19 @@ input {
   border-right: 1px solid #ddd;
 }
 
-.player-container h2 {
+.player-container .title {
   color: #FF675B;
-  margin-bottom: 30px 60px;
   margin-top: 0;
-  text-align: left;
+  font-size: 30px;
+}
+
+.player-container .player-name {
+  font-size: 44px;
+  margin-top: 60px;
+}
+
+.player-container .time {
+  font-size: 64px;
 }
 
 .player-container .btn {
@@ -101,6 +110,7 @@ input {
   color: #FF675B;
   font-size: 24px;
   border: 0;
+  margin-top: 60px;
 }
 
 .game-page .btn-container {
@@ -108,7 +118,7 @@ input {
   width: 100%;
   text-align: center;
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 .game-page .btn-container .btn {
