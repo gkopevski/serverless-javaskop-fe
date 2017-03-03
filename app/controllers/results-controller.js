@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('serverless.javaskop')
-    .controller('ResultsController', ['$state', 'apiFactory',
-      function ($state, apiFactory) {
+    .controller('ResultsController', ['$state', 'apiFactory', '$timeout',
+      function ($state, apiFactory, $timeout) {
 
         var resultsCtrl = this;
 
@@ -10,8 +10,9 @@ angular.module('serverless.javaskop')
 
         resultsCtrl.newGame = newGame;
 
-        updateResults();
-
+        $timeout(function () {
+          updateResults();
+        }, 2000);
 
         function updateResults() {
           apiFactory.getResults()
@@ -33,9 +34,8 @@ angular.module('serverless.javaskop')
     ])
     .filter('parseTime', function () {
       return function (time) {
-        var timeValues = time.split(":");
-        var minutes = timeValues[0];
-        var seconds = timeValues[1];
+        var minutes = Math.floor(time / 60) + "";
+        var seconds = (time % 60) + "";
         if (minutes.length === 1) {
           minutes = "0" + minutes;
         }
