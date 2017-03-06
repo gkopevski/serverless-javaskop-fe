@@ -74,7 +74,7 @@
 
         <button class="btn"
                 data-ng-click="gameCtrl.finishGame()"
-                data-ng-if="gameCtrl.hasGameFinished()"
+                data-ng-if="gameCtrl.player1.hasFinished && gameCtrl.player2.hasFinished"
                 data-ng-disabled="!gameCtrl.hasGameFinished()">
             Finish game
         </button>

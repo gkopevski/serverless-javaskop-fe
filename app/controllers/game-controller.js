@@ -6,11 +6,14 @@ angular.module('serverless.javaskop')
 
         var gameCtrl = this;
 
+        var ENTER_KEY = 13;
+        var SPACE_KEY = 32;
+
         gameCtrl.player1 = {
           id: undefined,
           name: '',
           hasFinished: false,
-          email:'',
+          email: '',
           timer: {
             timerId: undefined,
             seconds: 0,
@@ -21,7 +24,7 @@ angular.module('serverless.javaskop')
           id: undefined,
           name: '',
           hasFinished: false,
-          email:'',
+          email: '',
           timer: {
             timerId: undefined,
             seconds: 0,
@@ -39,7 +42,7 @@ angular.module('serverless.javaskop')
         gameCtrl.formatTime = formatTime;
 
 
-        function startGame () {
+        function startGame() {
           if (!canGameStart()) {
             return;
           }
@@ -51,31 +54,31 @@ angular.module('serverless.javaskop')
           startTimers();
         }
 
-        function canGameStart () {
+        function canGameStart() {
           if (gameCtrl.gameStarted) {
             return false; // game is already active
           }
           return !isEmpty(gameCtrl.player1.name)
-          && !isEmpty(gameCtrl.player2.name)
-          && !isEmpty(gameCtrl.player1.email)
-          && !isEmpty(gameCtrl.player2.email);
+              && !isEmpty(gameCtrl.player2.name)
+              && !isEmpty(gameCtrl.player1.email)
+              && !isEmpty(gameCtrl.player2.email);
         }
 
-        function isEmpty (name) {
+        function isEmpty(name) {
           return !name || name.trim().length === 0;
         }
 
-        function generateIds () {
+        function generateIds() {
           var now = moment();
           gameCtrl.player1.id = generateId(now);
           gameCtrl.player2.id = generateId(now.add(1, 'seconds'));
         }
 
-        function generateId (date) {
+        function generateId(date) {
           return date.format('HH-mm-ss');
         }
 
-        function startTimers () {
+        function startTimers() {
           gameCtrl.player1.timer.timerId = $interval(function () {
             updateTime(gameCtrl.player1.timer);
           }, 1000);
@@ -96,8 +99,20 @@ angular.module('serverless.javaskop')
           gameCtrl.stopTimer(gameCtrl.player2.timer);
         });
 
+        $scope.$on('keypress', function (eventName, event) {
+          if (gameCtrl.gameStarted && !gameCtrl.hasGameFinished()) {
+            if (event.which === ENTER_KEY) {
+              gameCtrl.stopGame(gameCtrl.player1);
+            }
+            if (event.which === SPACE_KEY) {
+              gameCtrl.stopGame(gameCtrl.player2);
+            }
+            $scope.$
+          }
+        });
 
-        function updateTime (timer) {
+
+        function updateTime(timer) {
           timer.seconds++;
           if (timer.seconds === 60) {
             timer.seconds = 0;
@@ -105,16 +120,17 @@ angular.module('serverless.javaskop')
           }
         }
 
-        function stopGame (player) {
+        function stopGame(player) {
           gameCtrl.stopTimer(player.timer);
           player.hasFinished = true;
+          $scope.$digest();
         }
 
-        function hasGameFinished () {
+        function hasGameFinished() {
           return gameCtrl.player1.hasFinished && gameCtrl.player2.hasFinished;
         }
 
-        function finishGame () {
+        function finishGame() {
           if (!hasGameFinished()) {
             return;
           }
@@ -134,16 +150,16 @@ angular.module('serverless.javaskop')
 
         }
 
-        function formatTime (player) {
+        function formatTime(player) {
           return player.timer.minutes + ':' + player.timer.seconds;
         }
 
-        function formatDBTime (player) {
+        function formatDBTime(player) {
           return player.timer.minutes * 60 + player.timer.seconds;
         }
 
 
-        function insertResult (player) {
+        function insertResult(player) {
           var formattedData = {
             'id': player.id,
             'name': player.name,
