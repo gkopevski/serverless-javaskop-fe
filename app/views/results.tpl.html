@@ -7,7 +7,7 @@
             <th>Name</th>
             <th>Time</th>
         </tr>
-        <tr data-ng-repeat="entry in resultsCtrl.resultsList | orderBy: '-time'  track by $index">
+        <tr data-ng-repeat="entry in resultsCtrl.resultsList | orderBy: '-onlyTime'  track by $index">
             <td>{{$index + 1}}.</td>
             <td>{{entry.name.S}}</td>
             <td>{{entry.time.N | parseTime}}</td>

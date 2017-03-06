@@ -10,14 +10,19 @@ angular.module('serverless.javaskop')
 
         resultsCtrl.newGame = newGame;
 
+        updateResults();
+
         $timeout(function () {
           updateResults();
-        }, 2000);
+        }, 1000);
 
         function updateResults() {
           apiFactory.getResults()
               .then(function (success) {
                     if (success.users.Items) {
+                      success.users.Items.forEach(function(item){
+                        item.onlyTime = parseInt(item.time.N);
+                      });
                       resultsCtrl.resultsList = success.users.Items;
                     }
                   },
