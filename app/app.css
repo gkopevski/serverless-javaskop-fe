@@ -1,6 +1,6 @@
 body {
   /*font-family: Roboto sans-serif;*/
-  background-color: #f7f7f7;
+  background-image: url("./assets/background.png");
 }
 
 .logo {
@@ -26,7 +26,6 @@ body {
   clear: both;
   background-color: #f7f7f7;
   padding: 0 25px 5px 25px;
-  margin-top: 74px;
   width: 100%;
   height: 100%;
 }
@@ -39,14 +38,12 @@ body {
 }
 
 .login-container {
-  position: absolute;
-  left: 30px;
-  width: 300px;
-  top: 20px;
   padding: 30px;
   height: auto;
   background-color: white;
   border: 1px solid #999;
+  width: 300px;
+  margin: 0 auto;
 }
 
 .login-container button {
@@ -93,7 +90,7 @@ input {
 }
 
 .player-container .title {
-  color: #af2a48;
+  color: #533a58;
   margin-top: 0;
   font-size: 30px;
 }
@@ -127,4 +124,10 @@ input {
 .game-page .btn-container .btn {
   width: 260px;
   font-size: 26px;
+}
+
+.table{
+  width: 100%;
+  max-width: 100%;
+  margin-top: 70px;
 }

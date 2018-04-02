@@ -107,7 +107,6 @@ angular.module('serverless.javaskop')
             if (event.which === SPACE_KEY) {
               gameCtrl.stopGame(gameCtrl.player2);
             }
-            $scope.$
           }
         });
 
