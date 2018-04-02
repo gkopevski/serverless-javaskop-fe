@@ -14,8 +14,11 @@ body {
 }
 
 .logo-image {
-  width: 350px;
-  height: 74px;
+  width: 125px;
+  height: 61px;
+  margin-top: 5px;
+  margin-left: 25px;
+  margin-bottom: 5px;
 }
 
 .app-container {
@@ -29,7 +32,7 @@ body {
 }
 
 .app-container.start-page {
-  background-image: url(https://www.cuponation.com/wp-content/uploads/2016/02/cnworldsmall-1.png?id=2863);
+  background-image: url("./assets/logo_background.png");
   background-size: 100%;
   background-repeat: no-repeat;
   position: fixed;
@@ -59,7 +62,7 @@ body {
 
 .btn {
   color: #FFF;
-  background-color: #FF675B;
+  background-color: #af2a48;
   border: 1px solid rgba(0,0,0,.1);
 
   font-weight: 300;
@@ -90,7 +93,7 @@ input {
 }
 
 .player-container .title {
-  color: #FF675B;
+  color: #af2a48;
   margin-top: 0;
   font-size: 30px;
 }
@@ -107,7 +110,7 @@ input {
 .player-container .btn {
   width: 240px;
   background-color: transparent;
-  color: #FF675B;
+  color: #af2a48;
   font-size: 24px;
   border: 0;
   margin-top: 60px;
